@@ -146,6 +146,42 @@ The site is live at **[edwardjedmonds.com](https://edwardjedmonds.com/)** over H
 
 Both HTTP and `www` variants redirect to the canonical `https://edwardjedmonds.com/` address.
 
+## Automatic search notifications (IndexNow)
+
+After each successful Pages deployment, the workflow sends added, changed, and removed
+public page URLs to the global [IndexNow endpoint](https://www.indexnow.org/documentation).
+No Bing login or GitHub secret is needed. `indexnow.json` identifies the site and its
+verification key; the matching `static/<key>.txt` file is intentionally served publicly
+for domain verification and must stay published.
+
+Before deployment, `scripts/indexnow.py prepare` compares sitemap-listed pages with
+`indexnow-manifest.json` on the live site. It fingerprints main content, SEO metadata,
+and structured data, excluding stylesheet/script fingerprints and the annual footer.
+Only public canonical pages enter the manifest; private drafts, search pages, tags,
+and redirect documents are excluded. Previously public URLs removed from the sitemap
+are also submitted so search engines can discover deletions, redirects, or noindex changes.
+The first deployment initializes the manifest and submits the current public pages.
+
+After deployment, the notification job checks that the new manifest and verification
+key are live before submitting. Unchanged builds send nothing. A temporary failure
+receives bounded retries; a persistent notification failure marks that job as failed
+without rolling back the successful website deployment. Use **Re-run failed jobs** on
+that Actions run to retry its saved plan, preferably before the next deployment.
+If a newer deployment has already replaced it, the old job refuses to announce stale
+content; reconcile outstanding URLs against the current site before resubmitting.
+A missing initial manifest (HTTP 404) initializes the baseline; other read or validation
+errors stop preparation rather than silently losing the change history.
+
+HTTP 200 means the submission was accepted; HTTP 202 means key validation is pending.
+Neither confirms that pages are indexed. The XML sitemap remains the full site inventory.
+
+Local checks (do not submit unpublished local changes):
+
+```sh
+python3 -m unittest discover -s scripts -p 'test_indexnow.py' -v
+python3 scripts/indexnow.py prepare --site-dir public
+```
+
 ## Known dependency: KaTeX
 
 Math is rendered by KaTeX loaded from a CDN, and only on pages that set `math: true`. For a

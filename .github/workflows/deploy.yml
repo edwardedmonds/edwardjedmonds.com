@@ -37,6 +37,8 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+      - name: Test IndexNow change detection
+        run: python3 -m unittest discover -s scripts -p "test_indexnow.py" -v
       - name: Build with Hugo
         # baseURL is fixed in hugo.toml (https://edwardjedmonds.com/); do not override.
         run: hugo --gc --minify
@@ -44,6 +46,14 @@ jobs:
         run: npx -y pagefind@1.5.2 --site public
       - name: Validate page metadata and feeds
         run: python3 scripts/check_metadata.py public
+      - name: Prepare IndexNow notifications
+        run: python3 scripts/indexnow.py prepare
+      - name: Save IndexNow notification plan
+        uses: actions/upload-artifact@v4
+        with:
+          name: indexnow-plan
+          path: indexnow-plan.json
+          retention-days: 30
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -59,3 +69,20 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  notify-indexnow:
+    name: Notify IndexNow after publication
+    needs: [build, deploy]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Download this deployment's notification plan
+        uses: actions/download-artifact@v4
+        with:
+          name: indexnow-plan
+      - name: Submit changed public URLs
+        run: python3 scripts/indexnow.py submit

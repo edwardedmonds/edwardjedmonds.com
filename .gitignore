@@ -19,3 +19,7 @@ Edward Edmonds + Histotechnologist*
 
 # Local writing drafts — excluded from Git and outside Hugo content
 /drafts/
+
+# Local Python caches and IndexNow deployment plan
+__pycache__/
+/indexnow-plan.json
