@@ -1,6 +1,9 @@
-<aside class="evidence-box" id="{{ .Get "id" }}" tabindex="-1" aria-labelledby="{{ .Get "id" }}-title">
-  <h3 class="evidence-title" id="{{ .Get "id" }}-title">{{ .Get "title" }}</h3>
+{{- $id := .Get "id" -}}
+{{- $n := strings.TrimPrefix "evidence-" $id -}}
+<aside class="evidence-box" id="{{ $id }}" tabindex="-1" aria-labelledby="{{ $id }}-title">
+  <h3 class="evidence-title" id="{{ $id }}-title">{{ .Get "title" }}</h3>
   <div class="evidence-content">
     {{ .Inner | .Page.RenderString (dict "display" "block") }}
+    <p class="evidence-back"><a class="evidence-backlink" href="#evidence-ref-{{ $n }}" data-pagefind-ignore>Back to text ↑</a></p>
   </div>
 </aside>

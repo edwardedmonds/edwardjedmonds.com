@@ -1,6 +1,6 @@
 ---
 title: "Archive"
-seo_title: "Archive: Writing from the Earlier Blog"
-description: "Writing from Edward J. Edmonds’s earlier blog, preserved with its original publication dates and wording."
+seo_title: "Archive: Working Research Notes & Reference Ledgers"
+description: "Ongoing working archives, annotated literature ledgers, and reference material accompanying the essays on physiology and adaptive systems."
 outputs: ["HTML"]
 ---

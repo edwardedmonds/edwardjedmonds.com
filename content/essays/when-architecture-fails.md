@@ -1,189 +1,69 @@
 ---
 title: "When Architecture Fails"
 seo_title: "When Architecture Fails: Membranes and Metabolism"
-subtitle: "From double bonds to metabolic crisis—why essential fatty acids are essential"
+subtitle: "From double bonds to mitochondrial failure—how membrane architecture shapes metabolism"
 date: 2026-01-24
-description: "An essay tracing proposed links between essential fatty acids, cardiolipin damage, mitochondrial dysfunction, and disrupted thyroid signaling."
+lastmod: 2026-11-22
+description: "How polyunsaturated membrane architecture, cardiolipin remodeling, pseudohypoxia, and local thyroid regulation connect—and where evidence meets hypothesis."
 tags: ["lipids", "essential fatty acids", "metabolism"]
+series: "efa"
+series_order: 4
 toc: true
 math: false
 aliases: ["/when-architecture-fails.html"]
 draft: false
 ---
 
-There’s a chemical reason you can’t build a membrane out of saturated fat. I want to walk through that chemistry, because it explains something important about why essential fatty acids are essential—and what happens when they’re missing.
+## Why Saturated Chains Cannot Build a Membrane
 
-Saturated fatty acids are chemically complete. Every carbon is bonded to its maximum number of hydrogens. No double bonds. No kinks. No electron-rich regions. They’re inert hydrocarbon chains that stack together like logs—stable, energetically dense, and utterly uninteresting from an architectural standpoint.
+Saturated fatty acids are chemically complete. Every carbon carries its maximum complement of hydrogens, the chain has no double bonds and no kinks, and the molecules stack against one another like straight rods. That inertness is what makes them good fuel: they store energy densely because they are stable. It also limits what they can do structurally, since a membrane built only from straight saturated chains would pack into a rigid, near-crystalline sheet. This essay follows what that limitation implies for essential fatty acids (EFAs), for the mitochondrial membrane in particular, and for the metabolic consequences when that membrane cannot be maintained. It builds on [Essential Architecture]({{< relref "essays/essential-architecture" >}}), on [Thyroid Hormone as the Guardian of Form]({{< relref "essays/thyroid-hormone-guardian-of-form" >}}), and on the supply-side account in [Essential Fatty Acids: Supply, Stress, and Adaptation]({{< relref "essays/essential-fatty-acids-supply-stress-and-adaptation" >}}), and I will try to mark where established biochemistry ends and my own synthesis begins.
 
-This is precisely what makes them good fuel. Nothing happens. They store energy because they don’t react.
+## Geometry, Electrons, and a Gradient of Unsaturation
 
-But you can’t *build* anything with molecules that don’t react. And that’s where this story begins.
+Each *cis* double bond forces a rigid bend into the acyl chain, and bent chains cannot align with straight neighbors or with planar cholesterol. The first double bond does the most work: converting stearic acid (18:0) to oleic acid (18:1) lowers the melting temperature by roughly 55°C, from about 70°C to about 13°C. Monounsaturated and diunsaturated chains are therefore not merely "saturated-like." In the endoplasmic reticulum (ER), oleate and linoleate preserve membrane fluidity and blunt the unfolded-protein response and lipoapoptosis that saturated palmitate triggers {{< cite "volmer2013" "rong2013" >}}, and in mitochondria a diunsaturated acyl chain, linoleate, is the one the heart selects for cardiolipin, as the next section describes {{< cite "schlame2017" >}}.
 
-## Part I: The Chemistry of Architecture
+Beyond this first tier lies a second. Chains with four or more double bonds, namely arachidonic acid (AA), eicosapentaenoic acid (EPA), and docosahexaenoic acid (DHA), add conformational flexibility that fewer double bonds cannot supply. Cell-culture work comparing fatty acids of increasing unsaturation found that membrane fluidity rose progressively with double-bond number {{< cite "yang2011" >}}, though that study was done in neuroblastoma cells and measured bulk fluorescence anisotropy, so it describes a gradient and not a sharp threshold. The most compelling case for the extra tier is the retinal photoreceptor, where DHA makes up a majority of the fatty acids in rod outer segment disks. Solid-state NMR and molecular dynamics simulations suggest that DHA's flexibility both reduces membrane elastic stress and lets the chains pack into grooves between rhodopsin's transmembrane helices, which lowers the barrier to the Meta I to Meta II transition {{< cite "grossfield2006" >}}. Double bonds are also π-electron systems, and it has been proposed that interactions with aromatic residues contribute to these lipid–protein contacts. I treat that as plausible but unproven, because the simulations show close contact without establishing that π–π attraction is the operative force. The architectural picture is a gradient: one or two double bonds break saturated packing, and four to six add the thinning and flexibility that sensory and excitable membranes appear to need.
 
-### The geometry problem
+## Cardiolipin and the Respiratory Machinery
 
-Polyunsaturated fatty acids are different because of their double bonds. Each cis double bond forces a rigid kink in the carbon chain—the molecule literally bends at that point and cannot straighten. A membrane made of saturated fat would pack tightly into a rigid, crystalline structure. The kinks in unsaturated chains prevent this packing, creating the fluid, flexible matrix that functional membranes require.
+Cardiolipin is the phospholipid in which these structural demands become metabolic ones. Unlike ordinary phospholipids with two acyl chains, it carries four, and it is found almost exclusively in the inner mitochondrial membrane, where its small head group and conical shape support the tight curvature of cristae. In the mature heart, those four positions are filled predominantly with linoleic acid, giving tetralinoleoyl-cardiolipin {{< cite "schlame2017" >}}. Cardiolipin stabilizes respiratory supercomplexes {{< cite "pfeiffer2003" >}}, and its loss disrupts them: supercomplexes are destabilized in patients with Barth syndrome {{< cite "mckenzie2006" >}}, and cardiac tetralinoleoyl-cardiolipin is depleted in the disorder {{< cite "schlame2002" >}}.
 
-DHA, with six double bonds, doesn’t just bend—it coils. Its conformation vibrates like a compressed spring, rapidly cycling through different shapes. These kinked molecules cannot align with straight-chain saturated fatty acids or planar cholesterol. They force disorder into the membrane.
+The enrichment in linoleate is not accidental, but the mechanism is easy to misstate. Tafazzin, the enzyme mutated in Barth syndrome, is a CoA-independent transacylase that moves acyl chains from phosphatidylcholine to monolysocardiolipin and does not use acyl-CoAs. In vitro, its transfer rate is about ten-fold higher for linoleoyl than for oleoyl groups and negligible for arachidonoyl groups {{< cite "xu2006" >}}. Later work showed that this selectivity depends largely on the physical state and non-bilayer curvature propensity of the lipid substrates, not on a rigid active-site preference alone {{< cite "schlame2012" >}}. Tissue cardiolipin composition then reflects the phospholipid acyl pool that tafazzin has to work with {{< cite "oemer2020" >}}, and feeding linoleate preserves cardiolipin and mitochondrial function in heart and brown adipose tissue {{< cite "mulligan2012" "snoke2023" >}}. The cell is not choosing linoleate from a menu so much as assembling the lipid whose geometry fits the curvature the cristae require, from the supply it has.
 
-This disorder isn’t a bug. It’s the feature.
+Barth syndrome shows what failure looks like, and the human and mouse evidence needs to be kept apart. In patients, whole-body fat oxidation during submaximal exercise is blunted and partly compensated by enhanced glucose turnover, with elevated plasma lactate {{< cite "cade2019" >}}. In the tafazzin-knockdown (*TazKD*) mouse, cardiac mitochondria show impaired CoA-dependent oxidation of both pyruvate and palmitoylcarnitine before overt heart failure {{< cite "le2020" >}}, and pharmacologically raising circulating ketones did not relieve the hypertrophic cardiomyopathy {{< cite "greenwell2025" "greenwell2022" >}}. The ketone result fits the idea that the limitation lies in the oxidative machinery and not in the supply of fuel, but it comes from a mouse model, and I would not carry it over to patients without human data.
 
-### The electron density problem
+## Maintenance: Cardiolipin Is Durable and Vulnerable
 
-But geometry is only half the story. Double bonds also concentrate electron density—they’re π-electron systems, regions of the molecule where electrons are delocalized above and below the bond plane.
+An architecture that supports oxidative phosphorylation must also survive it. In *Drosophila* flight muscle, cardiolipin has a half-life of 27 ± 6 days, close to the adult lifespan of the fly, and this exceptional longevity is what allows cardiolipin to prolong the lifetimes of the respiratory proteins it surrounds inside cristae {{< cite "ren2023" >}}. The finding argues that cardiolipin is a stable scaffold. It does not argue that the lipid turns over rapidly, and the fragility lies elsewhere. Highly unsaturated cardiolipin sits beside the sources of mitochondrial reactive oxygen species (ROS), and peroxidation of cardiolipin has been tied to Complex I dysfunction in ischemia and aging {{< cite "paradies2004" "petrosillo2009" >}}, to permeability transition and cytochrome *c* release {{< cite "kagan2005" "petrosillo2006" >}}, and to the products, like 4-hydroxynonenal, that can inhibit Complex IV {{< cite "chen1998" >}}. Cells answer with remodeling and quality control, including externalization of damaged cardiolipin as a signal for mitophagy {{< cite "chu2013" >}}. Maintenance is therefore real but slow and selective, which means that when the supply of linoleate or the efficiency of repair falls short, the deficit accumulates in a lipid that the respiratory chain cannot do without.
 
-This matters because membrane proteins need to interact with their lipid environment. G-protein coupled receptors, ion channels, and other transmembrane proteins don’t just float passively in the membrane—they bind specific lipids, and those binding interactions depend on electronic complementarity.
+## An Integrative Hypothesis: Fuel Choice and Structural Demand
 
-Here’s where it gets interesting: the binding pockets in membrane proteins are lined with aromatic amino acids—phenylalanine, tyrosine, and tryptophan. These amino acids also have π-electron systems in their ring structures. The attractive π-π interactions between the double bonds of polyunsaturated fatty acids and the aromatic residues of membrane proteins may explain why these proteins require PUFA-rich membrane environments to function properly.
+Here I move from established pieces to a hypothesis of my own. Long-chain saturated fatty acid β-oxidation delivers a larger share of its electrons to the coenzyme Q (CoQ) pool through FADH₂-linked steps than glucose oxidation does, and an over-reduced CoQ pool can drive reverse electron transport (RET) through Complex I and generate superoxide {{< cite "speijer2011" >}}. The proposal is that a high flux of saturated fat oxidation raises ROS production near cardiolipin, increases the rate at which damaged cardiolipin must be replaced, and thereby raises the demand for linoleate.
 
-Consider rhodopsin, the light-sensing protein in retinal cells. It sits in membranes where DHA accounts for 50-60% of total fatty acid content. This isn’t coincidental. The conformational changes rhodopsin undergoes during phototransduction require the rapid membrane deformation that only highly unsaturated lipids can provide. The π-π interactions between DHA’s double bonds and rhodopsin’s aromatic residues may stabilize specific protein conformations.
+The qualifications are substantial. RET is conditional: it requires a high protonmotive force and low ATP demand (State 4), and free fatty acids also uncouple mitochondria, which suppresses it. The healthy adult heart normally derives 60–90% of its ATP from fatty acid oxidation {{< cite "lopaschuk2010" >}} without any sign of cardiolipin collapse, so ordinary fatty acid oxidation in an EFA-replete tissue is evidently well buffered. The animal literature that appears to support the hypothesis is also confounded. Hydrogenated coconut oil brings on biochemical EFA deficiency in rats faster than a fat-free diet {{< cite "ling2010" >}}, which shows that saturated fat accelerates depletion on an EFA-devoid background, not that normal intakes deplete cardiolipin in an EFA-replete diet. Partially hydrogenated oils also contain *trans* fatty acids that suppress Δ6- and Δ5-desaturase activity {{< cite "hill1982" >}}, so they are not clean tests of saturated fat. In rats fed partially hydrogenated fish oil, the enlarged "megamitochondria" were a product of severe EFA deficiency and were prevented by linoleic acid, but those organelles retained normal respiratory pigment content and coupled respiration {{< cite "kryvi1986" >}}, so they should not be described as dysfunctional.
 
-You can’t get these interactions from saturated fat. There are no π electrons to share. The molecule is electronically inert—just as it’s geometrically inert.
+What survives is a modest and testable claim. Where EFA supply is marginal and oxidative flux is high, fuel choice could change how quickly structural lipids are consumed. The prediction is that cardiolipin linoleate content and peroxidation markers should shift with substrate mix in EFA-restricted animals but not in replete ones, and that the effect should depend on conditions that favor RET.
 
-### The threshold effect
+## From Cardiolipin Damage to Pseudohypoxia
 
-Not all unsaturation is equal. Fatty acids need at least four double bonds before they significantly affect membrane properties. Oleic acid (one double bond) and linoleic acid (two double bonds) don’t move the needle much. But arachidonic acid (four double bonds), EPA (five), and DHA (six) dramatically increase membrane fluidity and alter protein activity.
+Suppose cardiolipin damage does compromise the respiratory chain. The downstream sequence is among the better-established parts of this essay, although each step has been shown in different systems. Destabilized supercomplexes and impaired Complexes III and IV allow reducing equivalents to accumulate, so the NADH/NAD⁺ ratio rises and the NAD⁺-dependent dehydrogenases of the citric acid cycle (isocitrate, α-ketoglutarate, and malate dehydrogenases) slow. Succinate dehydrogenase, which is Complex II, is a separate case: it is FAD- and CoQ-dependent, and it stalls when ubiquinol cannot be reoxidized, because the CoQ pool is over-reduced or downstream complexes are impaired. Succinate then accumulates.
 
-This suggests a threshold effect: you need enough double bonds to create sufficient geometric disruption and electron density to matter. Below that threshold, you have molecules that are technically unsaturated but functionally behave more like saturated chains.
+Succinate inhibits the prolyl hydroxylases (PHDs) that normally tag hypoxia-inducible factor 1α (HIF-1α) for degradation, so HIF-1α stabilizes even when oxygen is adequate {{< cite "selak2005" >}}. This is pseudohypoxia. HIF-1α induces a familiar gene program that includes GLUT1, hexokinase 2, and lactate dehydrogenase A, and it induces pyruvate dehydrogenase kinase 1, which inhibits pyruvate dehydrogenase and diverts pyruvate away from the citric acid cycle {{< cite "kim2006" >}}. The result is a Warburg-like shift toward aerobic glycolysis in a cell that is not malignant, and that cell is responding to damaged mitochondrial architecture. The Barth syndrome observations of blunted fat oxidation, enhanced glucose turnover, and raised lactate are consistent with this shift, but they do not demonstrate that succinate and HIF-1α mediate it in patients.
 
-## Part II: Cardiolipin—The Critical Target
+## Thyroid Signaling: Two Proposed Links
 
-### The fourth fatty acid
+HIF-1α connects to thyroid biology through the type 3 deiodinase, D3, which inactivates T3 and T4. The established mechanism is local. HIF-1α binds the *DIO3* promoter and induces D3, and hypoxia lowers T3-dependent signaling in hypoxic cells and in the hypertrophic right ventricular myocardium of a rat model, where local T3 content falls {{< cite "simonides2008" >}}. This is the limited claim that [Thyroid Hormone as the Guardian of Form]({{< relref "essays/thyroid-hormone-guardian-of-form" >}}) defends, and nothing here extends it to the liver or to circulating hormone. It is tempting to extend it—arguing that hepatic D3 induction lowers circulating T3 and produces a functional hypothyroid state—but the data do not support that. The integrative hypothesis is narrower: that widespread, chronic mitochondrial pseudohypoxia, if it occurs, might contribute to systemic T3 suppression across many tissues. It would need direct measurement of tissue T3 and deiodinase activity to test, and in the meantime the hypothesis is compatible with the essay on thyroid hormone, where low T3 signaling in a stressed tissue may reflect regulation as much as deficiency.
 
-There’s a phospholipid that sits at the heart of cellular energy production, and it has a peculiar requirement. Cardiolipin is the key to connecting the chemistry with the metabolic consequences.
+The second link runs through the thyroid gland itself. Iodolipids formed from arachidonic acid are proposed mediators of thyroid autoregulation, the gland's adjustment of its own activity to iodine supply. One of them, 6-iodolactone (6-IL), was identified in iodide-treated human goiter, and it inhibits proliferation of thyroid follicular cells at concentrations far below those of iodide itself {{< cite "dugrillon1990" "dugrillon1994" >}}. That makes it a candidate intracellular mediator of the growth-inhibitory arm of autoregulation, alongside other iodolipids such as 2-iodohexadecanal and direct iodide effects on the sodium–iodide symporter and thyroid peroxidase. It would be an overstatement to call it the molecular basis of the Wolff-Chaikoff effect.
 
-Cardiolipin is unique among membrane lipids. While most phospholipids carry two fatty acid chains, cardiolipin carries four—a tetra-acyl structure found almost exclusively in the inner mitochondrial membrane. In the mature human heart, those four positions are filled with linoleic acid: tetralinoleoyl-cardiolipin.
+The tempting extension, that too little linoleic acid means too little arachidonate, too little 6-IL, and therefore impaired autoregulation, needs three cautions. First, the causal arrow runs both ways. Hypothyroidism suppresses hepatic Δ6-desaturase and lowers arachidonate even when linoleate is plentiful, and these changes reverse with T3 {{< cite "faas1982" "hoch1988" >}}, so finding low arachidonate in hypothyroid patients cannot show that low arachidonate caused the hypothyroidism. Second, across typical Western intakes, varying dietary linoleic acid barely changes tissue arachidonate {{< cite "rett2011" >}}, as discussed in [the first essay of this series]({{< relref "essays/essential-fatty-acids-supply-stress-and-adaptation" >}}). Third, any dependence of autoregulation on arachidonate is therefore likely to matter only under true EFA deficiency or impaired desaturation. Within that range the pathway is a coherent possibility and a small one.
 
-This isn’t random. An enzyme called tafazzin specifically remodels cardiolipin, and its substrate preferences are revealing: 10-fold preference for linoleoyl-CoA over oleoyl-CoA, 20-fold over arachidonoyl-CoA. The cell is selecting for linoleic acid—a specific essential fatty acid—at this specific location.
+## What Is Established and What Is Not
 
-Why? Cardiolipin is the “glue” that holds the respiratory supercomplexes together. Complexes I, III, and IV of the electron transport chain don’t operate as isolated units—they form supramolecular assemblies, and cardiolipin stabilizes these associations. Remove functional cardiolipin, and the supercomplexes disassemble. Electron transport becomes inefficient. ATP production falters.
+Several things here rest on direct evidence. Unsaturation lowers melting temperature and sustains membrane fluidity in a graded way, with the largest single step at the first double bond. Cardiolipin, enriched in linoleate through curvature-sensitive transacylation, stabilizes the respiratory machinery and is very durable in the fly. Its loss in Barth syndrome disrupts oxidative metabolism, and its peroxidation damages respiratory complexes. Succinate accumulation stabilizes HIF-1α and drives PDK1, and HIF-1α induces D3 locally in stressed tissue.
 
-Barth syndrome demonstrates what happens when this architecture fails. Caused by mutations in the tafazzin gene, this condition prevents normal cardiolipin remodeling. The clinical picture: cardiomyopathy, skeletal muscle weakness, neutropenia, and often death in infancy or childhood. The molecular picture: disorganized cristae, destabilized respiratory complexes, and mitochondrial dysfunction.
+Other things are hypotheses. I propose that saturated fat oxidation through RET can accelerate the consumption of structural linoleate when EFA supply is limiting, that chronic pseudohypoxia can propagate into systemic T3 suppression, and that arachidonate-derived iodolipids connect EFA status to thyroid autoregulation in deficiency states. None of these has been demonstrated in humans, and each could fail on a single measurement: cardiolipin composition and ROS markers under defined fuel and EFA conditions, tissue-level T3 and deiodinase activity in states of chronic mitochondrial dysfunction, and iodolipid concentrations in thyroid tissue across EFA status.
 
-This is where the chemistry becomes bioenergetics. The same molecular features that make essential fatty acids essential for membrane architecture—their geometry, their electron density—make them essential for the machinery of energy production.
+The practical implication is correspondingly modest. Linoleate is not an inherently beneficial or harmful nutrient, and saturated fat is not an inherently toxic one. The questions are whether the structural lipids the mitochondrion needs are supplied faster than they are consumed, and how that balance varies with metabolic rate, activity, and genetics. The guardian of form depends on its architecture as much as the architecture depends on the guardian, and this essay's claim is limited to the proposition that the connection deserves direct testing.
 
-## Part III: The Consumption Problem
-
-### Building materials get used up
-
-Cardiolipin isn’t static. It turns over.
-
-In Drosophila flight muscle—one of the most metabolically active tissues in biology—cardiolipin has a half-life of approximately 27 days. And the unsaturated components turn over faster than the saturated ones. Oleate and vaccenate (unsaturated) are replaced more rapidly than palmitate and stearate (saturated).
-
-Why? Reactive oxygen species.
-
-The very process of oxidative phosphorylation—the reason cardiolipin exists—generates ROS. These radicals attack the most vulnerable targets: the polyunsaturated double bonds in membrane lipids. Oxidized cardiolipin isn’t just dysfunctional—it’s actively harmful. The cell recognizes damaged cardiolipin and rapidly degrades it. This is quality control, not pathology.
-
-But it means that maintaining functional cardiolipin requires continuous replacement of oxidized molecules. You need a steady supply of the building blocks.
-
-### The SFA-EFA connection
-
-Now consider what happens during saturated fat oxidation.
-
-When you burn palmitate or stearate in mitochondria, the beta-oxidation process feeds electrons into the coenzyme Q pool. With high SFA flux, this pool becomes over-reduced—saturated with electrons. The excess electrons flow backward through Complex I via reverse electron transport, generating superoxide.
-
-This ROS oxidizes cardiolipin.
-
-The implication: **higher saturated fat oxidation generates more ROS, which oxidizes more cardiolipin, which increases the demand for essential fatty acids to replace the damaged molecules.**
-
-This explains an otherwise puzzling observation from the animal literature: hydrogenated coconut oil (almost pure saturated fat) induces essential fatty acid deficiency within two weeks. Partially hydrogenated fish oil fed to rats produces megamitochondria—giant, dysfunctional organelles with swollen cristae. But adding linoleic acid back to these diets *prevents* the mitochondrial damage.
-
-The saturated fat isn’t directly toxic. It’s consuming the essential fatty acids.
-
-## Part IV: The Cascade When Architecture Fails
-
-### From membrane damage to metabolic crisis
-
-What happens when cardiolipin replacement can’t keep pace with consumption? The consequences cascade through metabolism:
-
-**Stage 1: Respiratory chain destabilization**
-
-Supercomplexes disassemble. Electron flow from NADH through Complexes I, III, and IV becomes inefficient. The NADH/NAD+ ratio rises—the cell is producing NADH faster than it can oxidize it.
-
-**Stage 2: TCA cycle inhibition**
-
-Multiple enzymes of the citric acid cycle are NAD+-dependent. When NADH accumulates, these reactions slow. Particularly, succinate dehydrogenase (Complex II) becomes overwhelmed, and succinate accumulates.
-
-**Stage 3: Pseudohypoxia**
-
-Succinate isn’t just a metabolite—it’s a signaling molecule. Under normal conditions, prolyl hydroxylases (PHDs) continuously degrade HIF-1α, a transcription factor that activates hypoxic gene expression. PHDs require α-ketoglutarate as a substrate and are inhibited by succinate.
-
-When succinate accumulates, PHD activity decreases. HIF-1α stabilizes and translocates to the nucleus—even when oxygen is perfectly adequate. The cell *thinks* it’s hypoxic. This is pseudohypoxia.
-
-**Stage 4: The glycolytic shift**
-
-HIF-1α activates a characteristic gene program: - GLUT1: increased glucose uptake - Hexokinase 2: enhanced glycolytic flux  
-- Lactate dehydrogenase A: conversion of pyruvate to lactate - Pyruvate dehydrogenase kinase 1: inhibition of pyruvate entry into TCA cycle
-
-The cell shifts from oxidative phosphorylation to aerobic glycolysis—the Warburg phenotype, familiar from cancer metabolism. But this isn’t a cancer cell. This is a normal cell responding to damaged mitochondrial architecture.
-
-### Evidence from Barth syndrome
-
-Barth syndrome provides a natural experiment: what happens with direct, genetic cardiolipin deficiency?
-
-The metabolic picture is exactly what the cascade predicts. Patients show impaired fatty acid oxidation with a compensatory increase in glycolysis. Pyruvate is shunted to lactate rather than entering the TCA cycle. The Cori cycle—shuttling lactate to the liver for gluconeogenesis—becomes chronically activated.
-
-One particularly telling observation: ketone supplementation doesn’t help. If the problem were simply energy deficit—not enough fuel—providing alternative substrates should improve things. It doesn’t. The problem isn’t fuel availability. The problem is that the mitochondria *can’t use* oxidative fuels because the architecture is broken.
-
-### The thyroid connection
-
-HIF-1α has another target: Type 3 Deiodinase (D3).
-
-D3 is the enzyme that inactivates thyroid hormone, converting T4 to reverse-T3 and T3 to T2. When HIF-1α induces D3 expression in the liver, circulating T3 drops.
-
-This creates a functional hypothyroid state—low T3, reduced metabolic rate—without any pathology in the thyroid gland itself. The thyroid is producing hormone normally. The problem is downstream: accelerated clearance driven by HIF-1α, driven by succinate accumulation, driven by respiratory chain dysfunction, driven by cardiolipin damage.
-
-This connects back to my earlier essay on thyroid hormone. I described T3 as the “guardian of form”—the signal that coordinates the body’s maintenance of tissue architecture. When T3 falls because of this cascade, the body’s capacity to maintain form decreases. Not because thyroid hormone is missing, but because damaged mitochondrial architecture triggered a systemic response that suppresses it.
-
-### The iodolipid connection
-
-But there’s a second pathway connecting EFA status to thyroid function—one that doesn’t go through mitochondria at all.
-
-The thyroid gland makes signaling molecules by iodinating arachidonic acid.
-
-Thyroid peroxidase—the same enzyme that iodinates thyroglobulin to make T4 and T3—also catalyzes the formation of iodolipids. The most studied is 6-iodolactone (6-IL), formed when iodine is added across arachidonic acid’s double bonds. These iodinated fatty acid derivatives aren’t hormones, but they’re critical for thyroid autoregulation—the gland’s ability to modulate its own activity based on iodine availability.
-
-6-iodolactone inhibits thyroid cell proliferation at concentrations 50-fold lower than iodide alone. It suppresses iodine uptake and organification. This is the molecular mechanism behind the Wolff-Chaikoff effect—the temporary inhibition of thyroid hormone synthesis that occurs with high iodine intake.
-
-The dependency on arachidonic acid is direct. Arachidonic acid is synthesized from linoleic acid through elongation and desaturation. In essential fatty acid deficiency, arachidonic acid levels drop. Studies show hypothyroid patients have lower arachidonic acid in their cholesteryl fatty acid fractions.
-
-The implication: without adequate linoleic acid, you have less arachidonic acid, which means less substrate for iodolipid formation, which means impaired thyroid autoregulation.
-
-This is a second, independent mechanism by which EFA status affects thyroid function. The first pathway runs through mitochondrial damage → pseudohypoxia → HIF-1α → D3 induction → accelerated T3 clearance. This second pathway runs through inadequate arachidonic acid → reduced iodolipid synthesis → impaired autoregulation.
-
-Both pathways converge on the same outcome: compromised thyroid function when essential fatty acids are inadequate.
-
-## Part V: The Unified Picture
-
-### Architecture determines metabolism
-
-The essential fatty acids are essential because their molecular structure—the geometry of kinked chains, the electron density of double bonds—enables functional architecture. This architecture isn’t peripheral to metabolism; it *is* metabolism. The respiratory chain doesn’t work without proper membrane structure. The electron transport that makes ATP requires the supercomplexes that cardiolipin holds together.
-
-### Architecture is continuously consumed
-
-That architecture isn’t permanent. The very process it enables—oxidative phosphorylation—generates the ROS that damages it. Maintaining functional membranes requires continuous replacement of oxidized components. Essential fatty acids aren’t just building materials deposited once; they’re building materials continuously consumed.
-
-### Fuel choice affects consumption rate
-
-Saturated fat oxidation, via reverse electron transport, generates ROS that accelerates this consumption. The more saturated fat you burn, the faster you oxidize cardiolipin, the higher your requirement for essential fatty acids.
-
-This isn’t an argument that saturated fats are “bad.” It’s a recognition that fuel and building materials interact. The ratio matters.
-
-### Architectural failure cascades through the system
-
-When replacement can’t keep pace with consumption, the consequences aren’t limited to mitochondria. Pseudohypoxia activates HIF-1α. The glycolytic shift changes whole-body metabolism. D3 induction suppresses T3. Inadequate arachidonic acid impairs thyroid autoregulation. What started as membrane damage touches energy production, glucose handling, and hormonal regulation through multiple independent pathways.
-
-### Form depends on architecture
-
-In my earlier essay, I described T3 as the “guardian of form”—the signal that enables the body to maintain its tissues against entropy. But the guardian needs building materials. The form that T3 defends depends on the architecture that essential fatty acids enable. Damaged architecture triggers the very mechanisms that suppress the guardian—and inadequate EFAs compromise even the thyroid’s ability to regulate itself.
-
-## What This Means
-
-The practical conclusion is simple: adequate essential fatty acid intake is protective.
-
-Not because polyunsaturated fats are inherently beneficial. Not because saturated fats are inherently harmful. But because the metabolism of saturated fats consumes essential fatty acids, and when that consumption exceeds replacement, the consequences cascade.
-
-Individual optima likely vary with genetics, metabolic rate, and activity level. Someone with high metabolic flux—an athlete, someone with naturally high T3—probably has higher EFA requirements than someone sedentary. The same saturated fat intake could be adequate for one person and depleting for another.
-
-This framework isn’t about demonizing macronutrients. It’s about understanding the relationship between fuel and architecture, and recognizing that molecules can have different fates with very different consequences.
+{{< references >}}

@@ -4,7 +4,21 @@
 {{- $siteId := printf "%s#website" site.BaseURL -}}
 {{- $personId := printf "%s#person" site.BaseURL -}}
 {{- $pageId := printf "%s#webpage" .Permalink -}}
-{{- $person := dict "@type" "Person" "@id" $personId "name" site.Params.author "url" ("about/" | absURL) "description" site.Params.author_bio "sameAs" (slice "https://github.com/edwardedmonds") -}}
+{{- $sameAs := slice
+    "https://github.com/edwardedmonds"
+    "https://www.credly.com/badges/98b44cdc-b993-4f95-8ba0-56fb2e000c00/public_url"
+    "https://www.credly.com/badges/46a2f830-ffc3-4f1c-9568-129cdf914d2f/public_url"
+-}}
+{{- with site.Params.newsletter.url -}}{{- $sameAs = $sameAs | append . -}}{{- end -}}
+{{- $knowsAbout := slice
+    "Histotechnology"
+    "Immunohistochemistry"
+    "Essential Fatty Acids"
+    "Lipid Metabolism"
+    "Endocrinology"
+    "Complex Adaptive Systems"
+-}}
+{{- $person := dict "@type" "Person" "@id" $personId "name" site.Params.author "url" ("about/" | absURL) "description" site.Params.author_bio "sameAs" $sameAs "knowsAbout" $knowsAbout -}}
 {{- $website := dict "@type" "WebSite" "@id" $siteId "url" site.BaseURL "name" site.Title "description" site.Params.description "inLanguage" "en-US" "publisher" (dict "@id" $personId) -}}
 {{- $type := "WebPage" -}}
 {{- if eq .RelPermalink ("/about/" | relURL) -}}

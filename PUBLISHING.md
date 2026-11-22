@@ -166,6 +166,18 @@ git add -A && git commit -m "New essay: ..." && git push
 *Note: `essays/` is the active section. `concepts/` and `notes/` exist in the repo but are
 currently unlinked and hidden from search — say the word if you want to start using them.*
 
+## Citations and references
+
+Academic author–year citations with hover/tap previews and an automatic bibliography.
+
+1. Add each paper once to `data/references.yaml` (key, `short` chip label, authors, year, title, journal, volume, pages, url, source).
+2. Cite in prose: `{{</* cite "wene1975" */>}}` → (Wene et al., 1975). Several at once: `{{</* cite "a" "b" */>}}` → (A et al., 1990; B & C, 1985). An unknown key fails the build.
+3. Put `{{</* references */>}}` once near the end of the essay. It lists every cited paper alphabetically, with "Cited ↑ 1 2" back-links added by script.
+4. Longer commentary on a source: mark the spot with `{{</* note 3 */>}}` and write the note as `{{</* evidence id="evidence-3" title="3: short title" */>}}…{{</* /evidence */>}}`. Cites inside notes work, and the "Back to text" link is automatic. Set `evidence_notes: true` in the front matter.
+5. Quick asides can still use Markdown footnotes (`[^1]`); they get the same hover/tap preview.
+
+Without JavaScript every marker is a plain anchor link, and popovers are hidden in print.
+
 ## Metadata conventions
 
 - `title` is the visible article heading. Optional `seo_title` adds concise context to the browser/search/social title without changing that heading.

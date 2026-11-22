@@ -9,8 +9,11 @@ timeZone = "America/Chicago"
 title = "Edward J. Edmonds"
 enableRobotsTXT = true
 enableGitInfo = false
-# Emit an author-friendly "last modified" from front matter if present
+# Emit an author-friendly "last modified" only when explicitly set in front matter
 enableEmoji = false
+
+[frontmatter]
+  lastmod = ["lastmod"]
 
 [pagination]
   pagerSize = 12
@@ -38,6 +41,10 @@ enableEmoji = false
     name = "Essays"
     pageRef = "/essays"
     weight = 10
+  [[menu.main]]
+    name = "Archive"
+    pageRef = "/archive"
+    weight = 20
   [[menu.main]]
     name = "About"
     pageRef = "/about"

@@ -1,7 +1,22 @@
 {{ define "main" }}
 <article class="post wrap"{{ if in (slice "essays" "archive") .Section }} data-pagefind-body{{ end }}>
+  {{- $thread := dict }}
+  {{- $seriesItems := slice }}
+  {{- with .Params.series }}
+    {{- $sid := . }}
+    {{- range hugo.Data.threads }}
+      {{- if eq .id $sid }}{{ $thread = . }}{{ end }}
+    {{- end }}
+    {{- $seriesItems = sort (where site.RegularPages "Params.series" $sid) "Params.series_order" "asc" }}
+  {{- end }}
+
   <header class="post-header">
-    {{- if not .IsHome }}<p class="kicker"><a href="{{ .CurrentSection.RelPermalink }}">{{ .CurrentSection.Title }}</a></p>{{ end }}
+    {{- if not .IsHome }}
+    <p class="kicker">
+      <a href="{{ .CurrentSection.RelPermalink }}">{{ .CurrentSection.Title }}</a>
+      {{- with $thread.title }} · <a href="{{ printf "/#thread-%s" $thread.id | relURL }}">{{ . }}</a>{{ end }}
+    </p>
+    {{- end }}
     <h1>{{ .Title }}</h1>
     {{- with (or .Params.subtitle .Description) }}<p class="post-subtitle">{{ . }}</p>{{ end }}
     {{- if .IsPage }}
@@ -29,8 +44,25 @@
   </div>
 
   <footer class="post-footer" data-pagefind-ignore>
-    {{- if eq .Section "essays" }}
     {{- $current := . }}
+    {{- if gt (len $seriesItems) 1 }}
+    {{- range $index, $item := $seriesItems }}
+    {{- if eq .RelPermalink $current.RelPermalink }}
+    <nav class="essay-navigation" aria-label="Thread sequence">
+      {{- if gt $index 0 }}
+      {{- with index $seriesItems (sub $index 1) }}
+      <p><span>Previous in thread</span><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
+      {{- end }}
+      {{- end }}
+      {{- if lt $index (sub (len $seriesItems) 1) }}
+      {{- with index $seriesItems (add $index 1) }}
+      <p><span>Next in thread</span><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
+      {{- end }}
+      {{- end }}
+    </nav>
+    {{- end }}
+    {{- end }}
+    {{- else if eq .Section "essays" }}
     {{- $essays := (where site.RegularPages "Section" "essays").ByPublishDate }}
     {{- range $index, $essay := $essays }}
     {{- if eq .RelPermalink $current.RelPermalink }}

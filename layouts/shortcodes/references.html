@@ -1,0 +1,32 @@
+{{- /* Bibliography built automatically from every {{< cite >}} in this page's source.
+       Alphabetical by author, deduplicated. Place once, near the end of the essay. */ -}}
+{{- $keys := slice -}}
+{{- range findRE `\{\{<\s*cite\s[^>]*>\}\}` .Page.RawContent -}}
+  {{- range findRE `"[^"]+"` . -}}
+    {{- $keys = $keys | append (strings.Trim . `"`) -}}
+  {{- end -}}
+{{- end -}}
+{{- $items := slice -}}
+{{- range $keys | uniq -}}
+  {{- $k := . -}}
+  {{- with index hugo.Data.references $k -}}
+    {{- $items = $items | append (merge . (dict "key" $k "sortkey" (lower (printf "%s %v" .short .year)))) -}}
+  {{- end -}}
+{{- end -}}
+{{- if $items }}
+<section class="references" aria-labelledby="references-title">
+  <h2 id="references-title">References</h2>
+  <ul class="reference-list">
+    {{- range sort $items "sortkey" }}
+    <li class="reference" id="ref-{{ .key }}">
+      <span class="ref-authors">{{ .authors }}</span> ({{ .year }}). {{ .title }}.
+      {{- if .journal }} <em class="ref-journal">{{ .journal }}</em>{{ with .volume }}, {{ . }}{{ end }}{{ with .pages }}, {{ . }}{{ end }}.{{ end -}}
+      {{- with .publisher }} <span class="ref-publisher">{{ . }}</span>.{{ end -}}
+      {{- with .note }} <span class="ref-note">{{ . }}</span>{{ end }}
+      {{- $src := or .source "Link" -}}
+      {{- with .url }} <a class="ref-link" href="{{ . }}" rel="noopener">{{ $src }}&nbsp;&#8599;</a>{{ end }}
+    </li>
+    {{- end }}
+  </ul>
+</section>
+{{- end }}

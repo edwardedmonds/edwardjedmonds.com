@@ -6,15 +6,72 @@
   </div>
 </section>
 
+{{ with hugo.Data.threads }}
+<section class="wrap section-block">
+  <div class="section-head">
+    <h2>Research Threads</h2>
+    <a class="more" href="{{ "/essays/" | relURL }}">All essays &rarr;</a>
+  </div>
+  <p class="section-lede">Ongoing investigations and multi-part sequences, arranged in reading order.</p>
+  <div class="thread-list">
+    {{- range . }}
+    {{- $thread := . }}
+    {{- $items := sort (where site.RegularPages "Params.series" .id) "Params.series_order" "asc" }}
+    {{- if $items }}
+    <section class="thread-card" aria-labelledby="thread-{{ .id }}">
+      <div class="thread-head">
+        <h3 id="thread-{{ .id }}">{{ .title }}</h3>
+        {{- with .status }}<span class="thread-status{{ if eq . "Ongoing" }} is-ongoing{{ end }}">{{ . }}</span>{{ end }}
+      </div>
+      {{- with .description }}<p class="thread-desc">{{ . }}</p>{{ end }}
+      <ol class="thread-items">
+        {{- range $items }}
+        <li>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <span class="thread-item-meta">
+            {{- with .Params.series_label }}{{ . }} · {{ end -}}
+            {{- if eq .Section "archive" }}Archive · {{ end -}}
+            <time datetime="{{ .PublishDate.Format "2006-01-02" }}">{{ .PublishDate.Format "2006" }}</time>
+          </span>
+        </li>
+        {{- end }}
+      </ol>
+    </section>
+    {{- end }}
+    {{- end }}
+  </div>
+</section>
+{{ end }}
+
 {{ $essays := (where site.RegularPages "Section" "essays").ByPublishDate.Reverse }}
 {{ with $essays }}
 <section class="wrap section-block">
   <div class="section-head">
-    <h2>Essays</h2>
+    <h2>Recent Essays</h2>
     <a class="more" href="{{ "/essays/" | relURL }}">All essays &rarr;</a>
   </div>
   <ul class="entry-list">
-    {{- range first 10 . }}
+    {{- range first 5 . }}
+    <li class="entry">
+      <a class="entry-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+      {{- with .Description }}<p class="entry-desc">{{ . }}</p>{{ end }}
+      <p class="entry-meta"><time datetime="{{ .PublishDate.Format "2006-01-02" }}">{{ .PublishDate.Format "January 2, 2006" }}</time> · {{ .ReadingTime }} min read</p>
+    </li>
+    {{- end }}
+  </ul>
+</section>
+{{ end }}
+
+{{ $archive := (where site.RegularPages "Section" "archive").ByPublishDate.Reverse }}
+{{ with $archive }}
+<section class="wrap section-block">
+  <div class="section-head">
+    <h2>Archive</h2>
+    <a class="more" href="{{ "/archive/" | relURL }}">All archived writing &rarr;</a>
+  </div>
+  <p class="section-lede">Earlier writing preserved with its original dates and wording, annotated where helpful.</p>
+  <ul class="entry-list">
+    {{- range first 5 . }}
     <li class="entry">
       <a class="entry-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
       {{- with .Description }}<p class="entry-desc">{{ . }}</p>{{ end }}

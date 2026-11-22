@@ -1,0 +1,4 @@
+{{- /* In-text marker for an evidence note: {{< note 3 >}} links to {{< evidence id="evidence-3" >}}
+       and is the target of that note's "Back to text" link. */ -}}
+{{- $n := .Get 0 -}}
+<a class="evidence-ref" id="evidence-ref-{{ $n }}" href="#evidence-{{ $n }}" aria-label="Read evidence note {{ $n }}">[{{ $n }}]</a>

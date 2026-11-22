@@ -1,0 +1,13 @@
+{{- /* Author–year citation from data/references.yaml.
+       {{< cite "wene1975" >}}  → (Wene et al., 1975)
+       {{< cite "a" "b" >}}     → (A et al., 1990; B & C, 1985)
+       Unknown keys fail the build so a typo can never ship. */ -}}
+{{- $parts := slice -}}
+{{- range .Params -}}
+  {{- $k := . -}}
+  {{- $r := index hugo.Data.references $k -}}
+  {{- if not $r }}{{ errorf "cite: unknown reference %q in %s" $k $.Page.File.Path }}{{ end -}}
+  {{- $label := printf "%s, %v" $r.short $r.year -}}
+  {{- $parts = $parts | append (printf `<a class="cite" href="#ref-%s" data-ref="%s">%s</a>` $k $k (htmlEscape $label)) -}}
+{{- end -}}
+<span class="cite-group">({{ delimit $parts "; " | safeHTML }})</span>{{- /* no trailing whitespace */ -}}

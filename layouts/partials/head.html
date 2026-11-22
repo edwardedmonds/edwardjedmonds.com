@@ -58,7 +58,8 @@
     {{- $css := . | minify | fingerprint -}}
     <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
   {{- else }}
-    <link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{- $css := . | fingerprint -}}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
   {{- end }}
 {{- end }}
 
@@ -78,6 +79,13 @@
 {{/* Evidence navigation is needed only by essays with linked evidence notes. */}}
 {{- if .Params.evidence_notes }}
   {{- with resources.Get "js/evidence.js" | minify | fingerprint }}
+  <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+  {{- end }}
+{{- end }}
+
+{{/* Citation popovers (author–year cites, evidence notes, footnotes). Exits early if a page has none. */}}
+{{- if and .IsPage (in (slice "essays" "archive") .Section) }}
+  {{- with resources.Get "js/citations.js" | minify | fingerprint }}
   <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
   {{- end }}
 {{- end }}
