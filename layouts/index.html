@@ -1,6 +1,5 @@
 {{ define "main" }}
 <section class="hero wrap">
-  <p class="kicker">{{ site.Params.tagline }}</p>
   <div class="hero-intro">
     {{ .Content }}
   </div>
@@ -66,10 +65,10 @@
 {{ with $archive }}
 <section class="wrap section-block">
   <div class="section-head">
-    <h2>Archive</h2>
-    <a class="more" href="{{ "/archive/" | relURL }}">All archived writing &rarr;</a>
+    <h2>Working Archive</h2>
+    <a class="more" href="{{ "/archive/" | relURL }}">All working archives &rarr;</a>
   </div>
-  <p class="section-lede">Earlier writing preserved with its original dates and wording, annotated where helpful.</p>
+  <p class="section-lede">Ongoing working archives and annotated literature ledgers.</p>
   <ul class="entry-list">
     {{- range first 5 . }}
     <li class="entry">

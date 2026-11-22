@@ -1,9 +1,11 @@
 {{ define "main" }}
 <div class="wrap search-page" data-pagefind-ignore>
-  <h1>Search</h1>
-  <p class="search-lede">Search essays and archived writing by keyword.</p>
+  <header class="list-header">
+    <h1>Search</h1>
+    <p class="list-lede">Search essays and the ongoing working archive by keyword.</p>
+  </header>
   <div id="search"></div>
-  <noscript><p>Search needs JavaScript. Browse the <a href="{{ "/essays/" | relURL }}">essays</a> instead.</p></noscript>
+  <noscript><p>Search needs JavaScript. Browse the <a href="{{ "/essays/" | relURL }}">essays</a> or <a href="{{ "/archive/" | relURL }}">working archive</a> instead.</p></noscript>
 </div>
 {{/* Pagefind assets are generated after the Hugo build (see the deploy workflow / README). */}}
 <link href="{{ "/pagefind/pagefind-ui.css" | relURL }}" rel="stylesheet">

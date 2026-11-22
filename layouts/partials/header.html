@@ -1,19 +1,23 @@
 <a class="skip-link" href="#content">Skip to content</a>
 <header class="site-header">
   <div class="wrap header-inner">
-    {{- if .IsHome }}
-    <h1 class="site-heading"><a class="site-title" href="{{ "/" | relURL }}">{{ site.Title }}</a></h1>
-    {{- else }}
-    <a class="site-title" href="{{ "/" | relURL }}">{{ site.Title }}</a>
-    {{- end }}
+    <div class="header-brand">
+      {{- if .IsHome }}
+      <h1 class="site-heading"><a class="site-title" href="{{ "/" | relURL }}">{{ site.Title }}</a></h1>
+      {{- else }}
+      <a class="site-title" href="{{ "/" | relURL }}">{{ site.Title }}</a>
+      {{- end }}
+      {{- with site.Params.tagline }}<p class="site-tagline">{{ . }}</p>{{ end }}
+    </div>
     <nav class="site-nav" aria-label="Primary">
       <ul>
         {{- range site.Menus.main }}
-        <li><a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ else if $.HasMenuCurrent "main" . }} aria-current="true"{{ end }}>{{ .Name }}</a></li>
+        <li><a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ else if $.HasMenuCurrent "main" . }} aria-current="true"{{ end }}>[{{ .Name }}]</a></li>
         {{- end }}
         {{- if site.Params.newsletter.enabled }}
-        <li><a class="nav-cta" href="{{ site.Params.newsletter.url }}">Subscribe</a></li>
+        <li><a class="nav-cta" href="{{ site.Params.newsletter.url }}">[Subscribe]</a></li>
         {{- end }}
+        <li><a href="{{ "/index.xml" | relURL }}">[RSS]</a></li>
       </ul>
     </nav>
   </div>
